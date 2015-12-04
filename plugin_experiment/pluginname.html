@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+    <style type="text/css">
+        ul {margin-left:100px;margin-top:100px;}
+        ul li {width:300px}
+        p.myPara {color:#000000;cursor:pointer;font-size:14px;font-family:Arial;}
+        .redClass { color:red; }
+        .blueClass { color:blue; }
+        .seeyaClass {display:none;visibility:hidden;}
+        .dashboard {position:absolute;top:235px;left:100px; width:600px;}
+        .title {float:left;display:inline;}
+        .button {float:right;display:inline;}
+        .dashbutton {float:left;display:inline;}
+        .className {height:26px;}
+    </style>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <!--<script type="text/javascript" src="plugin_tip.js"></script>-->
+    <script type="text/javascript" src="Plugin_Study.js"></script>
+    <script language="javascript" type="text/javascript">
+        /* Please note that these cases match the code posted earlier in this section.
+        Not all plugin layouts will use the same code structure. */
+
+        // Call method "init" on each element matching ".className"
+//        $('.className').pluginName();
+//        $('.className').pluginName('init');
+//        $('.className').pluginName('init', {}); // Pass object "{}" to "init" as arguments
+//        $('.className').pluginName({}); // Pass object "{}" to "init" as arguments
+//        $('.className').pluginName({
+//            argument1: 2000,
+//            argument2: 'value',
+//            callback1: function () { }
+//        });
+
+//        // Call method "destroy" on each element matching ".className"
+//        $('.className').pluginName('destroy');
+//        $('.className').pluginName('destroy', {}); // Pass object "{}" to "destroy" as arguments
+
+//        // Also works
+//        $('.className').pluginName('init', 'argument1', 'argument2'); // Pass "argument 1" and "argument 2" to "init"
+
+        // Incorrect
+        //$('.className').pluginName('nonexistantMethod');
+        //$('.className').pluginName('nonexistantMethod', {});
+        //$('.className').pluginName('argument 1'); // Will attempt to call "argument 1" as method
+        //$('.className').pluginName('argument 1', 'argument 2'); // Will attempt to call "argument 1" as method
+        //$('.className').pluginName('privateFunction'); // 'privateFunction' is not a method
+        jQuery(document).ready(function () {
+            //jQuery('li.className').pluginName('show');
+            //jQuery('li.className').pluginName('set', 'testdata');
+            //$('#manual-trigger').pluginName({content: 'Hey, there! This is a tooltip.'});
+            jQuery('li.className').pluginName('init');
+
+
+            $('#button-show').click(function () { jQuery('li.className').pluginName('show'); });
+            $('#button-hide').click(function () { jQuery('li.className').pluginName('hide'); });
+            $('#button-disable').click(function () { jQuery('.button').pluginName('disable'); });
+            $('#button-enable').click(function () { jQuery('.button').pluginName('enable'); });
+            $('#button-reset').click(function () { jQuery('li.className').pluginName('reset'); });
+            $('#button-destroy').click(function () { jQuery('li.className').pluginName('destroy'); });
+            $("#button1").click(function () { jQuery('li#list1').pluginName('update'); });
+            $("#button2").click(function () { jQuery('li#list2').pluginName('update'); });
+            $("#button3").click(function () { jQuery('li#list3').pluginName('update'); });
+            $("#button4").click(function () { jQuery('li#list4').pluginName('update'); });
+            
+        });
+    </script>
+</head>
+<body>
+    <ul class="ulWrapper">
+        <li id="list1" class="className" data-name="firstlistnode"><span class="title">first</span>  <button id="button1" class="button">Update Content</button></li>  
+        <li id="list2" class="className" data-name="secondlistnode"><span class="title">second</span> <button id="button2" class="button">Update Content</button></li>
+        <li id="list3" class="className" data-name="thirdlistnode"><span class="title">third</span> <button id="button3" class="button">Update Content</button></li>
+        <li id="list4" class="className" data-name="fourthlistnode"><span class="title">fourth</span> <button id="button4" class="button">Update Content</button></li>
+    </ul>
+    <div class="dashboard">
+        <button id="button-show" class="dashbutton">Show</button>
+        <button id="button-hide" class="dashbutton">Hide</button>
+        <button id="button-disable" class="dashbutton">Disable</button>
+        <button id="button-enable" class="dashbutton">Enable</button>
+        <button id="button-reset" class="dashbutton">Reset</button>
+        <button id="button-destroy" class="dashbutton">Destroy</button>
+    </div>
+</body>
+</html>
